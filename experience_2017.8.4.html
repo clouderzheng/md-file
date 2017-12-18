@@ -1,0 +1,48 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">*{margin:0;padding:0;}body {	font:13.34px helvetica,arial,freesans,clean,sans-serif;	color:black;	line-height:1.4em;	background-color: #F8F8F8;	padding: 0.7em;}p {	margin:1em 0;	line-height:1.5em;}table {	font-size:inherit;	font:100%;	margin:1em;}table th{border-bottom:1px solid #bbb;padding:.2em 1em;}table td{border-bottom:1px solid #ddd;padding:.2em 1em;}input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}select,option{padding:0 .25em;}optgroup{margin-top:.5em;}pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}pre {	margin:1em 0;	font-size:12px;	background-color:#eee;	border:1px solid #ddd;	padding:5px;	line-height:1.5em;	color:#444;	overflow:auto;	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;	-webkit-border-radius:3px;	-moz-border-radius:3px;border-radius:3px;white-space: pre-wrap;word-wrap:break-word;}pre code {	padding:0;	font-size:12px;	background-color:#eee;	border:none;}code {	font-size:12px;	background-color:#f8f8ff;	color:#444;	padding:0 .2em;	border:1px solid #dedede;}img{border:0;max-width:100%;}abbr{border-bottom:none;}a{color:#4183c4;text-decoration:none;}a:hover{text-decoration:underline;}a code,a:link code,a:visited code{color:#4183c4;}h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6{border:0;}h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}h3{margin-top:1em;}hr{border:1px solid #ddd;}ul{margin:1em 0 1em 2em;}ol{margin:1em 0 1em 2em;}ul li,ol li{margin-top:.5em;margin-bottom:.5em;}ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}dt{font-weight:bold;margin-left:1em;}dd{margin-left:2em;margin-bottom:1em;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h3>2017.8</h3>
+<h4>O单</h4>
+<h5>该合并</h5>
+<pre><code>支付通道，使用一套支付标识</code></pre>
+<h5>不该合并</h5>
+<pre><code>各个通道有自己的公告通知，
+订单有自己的费率，单笔手续费</code></pre>
+<h3>springboot</h3>
+<pre><code>默认扫描的是main方法包路径下面的所有包，所以开发时要注意定义包名要与main方法包路径一致</code></pre>
+<h3>项目引入</h3>
+<pre><code>为了使实现引入包的共享，引入项目的聚合与继承
+
+子模块通过继承父模块，来获的父模块中的pom.xml配置信息。
+父模块作为聚合模块和父模块，这样父模块就可以聚合（组织）其子模块，子模块可以继承父模块。</code></pre>
+<h3>聚合和继承的关系</h3>
+<h4>区别 ：</h4>
+<pre><code>对于聚合模块来说，它知道有哪些被聚合的模块，但被聚合模块相互独立。
+对于继承关系的父POM来说，它不知道有哪些子模块继承它，但那些子模块都必须知道自己的父POM</code></pre>
+<h4>共同点</h4>
+<pre><code>聚合 POM与继承关系中的父POM的packaging都是pom。
+聚合模块与继承关系中的父模块除了POM之外都没有实际的内容</code></pre>
+<h4>误区</h4>
+<pre><code>继承一个项目的同时，不能把这个项目作为引用引入，否则会导致死循环</code></pre>
+<h3>mybatis的#{} 与${}的区别</h3>
+<pre><code>#{} 和 ${} 在预编译中的处理是不一样的
+select * from user where name = #{name};
+select * from user where name = ${name};</code></pre>
+<h5>{}处理</h5>
+<pre><code>#{} 在预处理时，会把参数部分用一个占位符 ? 代替，变成如下的 sql 语句：
+select * from user where name = ?;</code></pre>
+<h4>${}处理</h4>
+<pre><code>而 ${} 则只是简单的字符串替换，在动态解析阶段，该 sql 语句会被解析成
+select * from user where name = 'zhangsan';</code></pre>
+<h4>使用</h4>
+<pre><code>优先使用 #{}。因为 ${} 会导致 sql 注入的问题，但是表名用参数传递进来的时候，只能使用 ${} </code></pre>
+<h4>特殊使用</h4>
+<pre><code>外面拼接sql，把sql语句作为整体传入 ${}，使用${}，注意使用要用引号包裹起来，否则会被识别为数据库字段，例 '${}'</code></pre>
+<h3>拦截器与过滤器</h3>
+<h4>拦截器</h4>
+<pre><code>interceptor则基于Java本身的反射机制，而interceptor与servlet无关；interceptor只能过滤请求，只对action起作用，在action之前开始，在action完成后结束（如被拦截，不执行action）；在action的生命周期中，拦截器可以被多次调用，interceptor可以访问action上下文、值栈里的对象，而filter不能；</code></pre>
+<h4>过滤器</h4>
+<pre><code>filter基于filter接口中的doFilter回调函数，filter是依赖于servlet容器的，没有servlet容器就无法回调doFilter方法，filter的过滤一般在加载的时候在init方法声明，只能在容器初始化时被调用一次</code></pre>
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>

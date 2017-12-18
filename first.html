@@ -1,0 +1,88 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><p>
+</p>
+<h1>接口文档</h1>
+<h2>文档说明</h2>
+<h3>数据类型</h3>
+<hr>
+<p>统一使用utf-8数据格式
+</p>
+<hr>
+<h3>加密方式</h3>
+<hr>
+<p>数据按照ascii排序，以key=value&amp;...的方式连接，最后加上key=key值，进行<a href="http://baike.baidu.com/link?url=15_MAs19tzxrxi84maRVXrHKgPLKsONG0L76fDMFQG9D92a9xhEEfajzaLpOMav_JaLmMknJigd2MS2MCt8ln_" title="MD5说明">md5</a>加密
+</p>
+<hr>
+<blockquote>
+<p>郑净云编写
+</p>
+<blockquote>
+<p>2017.1.12
+</p>
+<hr>
+</blockquote>
+</blockquote>
+<h2>文档更新说明</h2>
+<h3>加密规则</h3>
+<hr>
+<p>不再使用MD5加密，不安全，现在采用AES非对称加密，平台持有公玥，渠道持有私玥，加密时都采用自己的私玥加密，公玥揭秘，各自保管好自己的私玥，以防数据安全
+
+</p>
+<h3>进件参数</h3>
+<h5>key|value</h5>
+<pre><code>phone|手机号
+merNo|平台商户号，平台唯一
+requestNo|请求流水号 保证每一条数据唯一
+agentId|代理商id</code></pre>
+<h3>返回参数</h3>
+<h4>key|value</h4>
+<pre><code>requestNo|请求流水号，n每一次请求唯一
+channelNo|d渠道分配给商户交易商户号 每个商户必须唯一
+status|状态   1 成功 2 失败 </code></pre>
+<h3>交易参数</h3>
+<h5>key|value</h5>
+<pre><code>channelNo|渠道分配给商户商户号 每个商户必须唯一
+requestNo|请求流水号  每次请求必须唯一
+amount|交易金额  单位（分）
+rate|交易费率 以千位底   l例：  9  表示  0.009</code></pre>
+<h3>渠道统计</h3>
+<pre><code> |  channelId  |  trandeAmount  |  tradeTime  |
+ |:-----:|:----|-----:|
+|浦发|单笔5000，单日20000|T1到账|</code></pre>
+<h3>表格</h3>
+<pre><code>| 姓名     | 年龄| 性别|
+
+
+|:--------|---------:|:-------:|
+| 张三| 18| 女      |
+| 小明| 23| 男      |</code></pre>
+<h3>color</h3>
+<table border="1">
+<caption>人物性格调查</caption>
+    <tbody><tr>
+        <td>name</td>
+        <td>age</td>
+        <td>gender</td>
+        <td>interest</td>
+    </tr>
+     <tr>
+        <td>night</td>
+        <td>22</td>
+        <td>男</td>
+        <td>飙车</td>
+    </tr>
+     <tr>
+        <td>lucy</td>
+        <td>18</td>
+        <td>女</td>
+        <td>画画</td>
+    </tr>
+
+</tbody></table>
+
+
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>

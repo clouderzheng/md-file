@@ -1,0 +1,121 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">*{margin:0;padding:0;}body {	font:13.34px helvetica,arial,freesans,clean,sans-serif;	color:black;	line-height:1.4em;	background-color: #F8F8F8;	padding: 0.7em;}p {	margin:1em 0;	line-height:1.5em;}table {	font-size:inherit;	font:100%;	margin:1em;}table th{border-bottom:1px solid #bbb;padding:.2em 1em;}table td{border-bottom:1px solid #ddd;padding:.2em 1em;}input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}select,option{padding:0 .25em;}optgroup{margin-top:.5em;}pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}pre {	margin:1em 0;	font-size:12px;	background-color:#eee;	border:1px solid #ddd;	padding:5px;	line-height:1.5em;	color:#444;	overflow:auto;	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;	-webkit-border-radius:3px;	-moz-border-radius:3px;border-radius:3px;white-space: pre-wrap;word-wrap:break-word;}pre code {	padding:0;	font-size:12px;	background-color:#eee;	border:none;}code {	font-size:12px;	background-color:#f8f8ff;	color:#444;	padding:0 .2em;	border:1px solid #dedede;}img{border:0;max-width:100%;}abbr{border-bottom:none;}a{color:#4183c4;text-decoration:none;}a:hover{text-decoration:underline;}a code,a:link code,a:visited code{color:#4183c4;}h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6{border:0;}h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}h3{margin-top:1em;}hr{border:1px solid #ddd;}ul{margin:1em 0 1em 2em;}ol{margin:1em 0 1em 2em;}ul li,ol li{margin-top:.5em;margin-bottom:.5em;}ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}dt{font-weight:bold;margin-left:1em;}dd{margin-left:2em;margin-bottom:1em;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h2>正则表达式</h2>
+<h2>正则表达式</h2>
+<h3>元字符</h3>
+<pre><code>.   任意字符（与行结束符可能匹配也可能不匹配）
+/s  空字符串[ \t\n\x0B\f\r]
+/s  非空字符串[^\s]
+/d  数字[0-9]
+/D  非数字[^0-9]
+/w  单词字符[a-zA-Z_0-9]
+/W  非单词字符[^\w]</code></pre>
+<h3>字符类</h3>
+<pre><code>[abc]     a、b 或 c（简单类）
+[^abc]     任何字符，除了 a、b 或 c（否定）
+[a-zA-Z]     a 到 z 或 A 到 Z，两头的字母包括在内（范围）
+[a-d[m-p]]     a 到 d 或 m 到 p：[a-dm-p]（并集）
+[a-z&amp;&amp;[def]]     d、e 或 f（交集）
+[a-z&amp;&amp;[^bc]]     a 到 z，除了 b 和 c：[ad-z]（减去）
+[a-z&amp;&amp;[^m-p]]     a 到 z，而非 m 到 p：[a-lq-z]（减去）</code></pre>
+<h3>边界匹配器</h3>
+<pre><code>^       行的开头
+\$      行的结尾
+\b      单词边界
+\B      非单词边界
+\A      输入的开头
+\G      上一个匹配的结尾
+\Z      输入的结尾，仅用于最后的结束符
+\z      输入的结尾</code></pre>
+<h3>括号使用限制</h3>
+<pre><code>方括号 【abc】  abc中的任意一个
+圆括号  （ab）  ab作为一个搜索组
+大括号   {x} 次数限制{1}一次 {1，}至少一次 {1,3}至少一次，至多3次</code></pre>
+<h3>例子</h3>
+<pre><code>static  String  html =  "&lt;html&gt;"+                                                                                       
+   "     &lt;head&gt;                                                                                                         "+
+   "         &lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf8\"&gt;                                     "+
+   "         &lt;script type=\"text/javascript\"&gt;                                                                          "+
+   "             function doSubmit(){                                                                                   "+
+   "                 document.getElementById(\"form1\").submit();                                                       "+
+   "             }                                                                                                      "+
+   "         &lt;/script&gt;                                                                                                  "+
+   "     &lt;/head&gt;                                                                                                        "+
+   "     &lt;body onload=\"doSubmit()\"&gt;                                                                                   "+
+   "        &lt;form id=\"form1\" method=\"post\" action=\"http://union.fastpay.rsrtech.net/union/toPayResultPage\"&gt;       "+
+   "              &lt;input type=\"hidden\" name=\"message_code\" value=\"000009\" /&gt;&lt;br/&gt;                                 "+
+   "              &lt;input type=\"hidden\" name=\"message_desc\" value=\"订单号重复\" /&gt;&lt;br/&gt;                             "+
+   "              &lt;input type=\"hidden\" name=\"order_id\" value=\"RSR281248\" /&gt;&lt;br/&gt;                                  "+
+   "         &lt;/form&gt;                                                                                                    "+
+   "                                                                                                                    "+
+   "     &lt;/body&gt;                                                                                                        "+
+   " &lt;/html&gt;";</code></pre>
+<h3>获取订单号</h3>
+<pre><code>Pattern pattern = Pattern.compile("&lt;input[\\s\\S]+name=\"order_id\"+[\\s]+value=\"([\\s\\S]*?)\"");</code></pre>
+<h3>获取地址链接</h3>
+<pre><code>Pattern pattern = Pattern.compile("&lt;form[\\s\\S]+action=\"([\\s\\S]+?)\"");</code></pre>
+<h2>数据传输</h2>
+<h3>URL链接方式</h3>
+<h4>例子</h4>
+<pre><code>@Test
+public void testSendMes(){
+    Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    map.put("name", "郑净云");
+    map.put("age", "23");
+    map.put("gender", "男");
+    map.put("address", "四川成都");
+    map.put("interest", "哈皮");
+    map.put("appearance", "handsome");
+    map.put("appid", "100012");
+    map.put("sign", Md5Encrypt.md5(JSON.toJSONString(map)));
+
+    try {
+        URL url = new URL("http://192.168.1.108:9112/sendMes/getObject");
+
+        URLConnection connection = url.openConnection();//返回一个 URLConnection 对象，它表示到 URL 所引用的远程对象的连接。
+        connection.setRequestProperty("Content-Type","application/json");//指定流信息包装在请求体  reqesut为空  @responseBody接收
+        connection.setDoOutput(true);//支持输出
+        connection.setDoInput(true);//支持输入
+
+        String param = JSON.toJSONString(map);
+        OutputStream out = connection.getOutputStream();
+        out.write(param.getBytes("UTF-8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String result = null;
+        StringBuilder buffer = new StringBuilder();
+        while(null != (result = reader.readLine())){
+            buffer.append(result);
+        }
+        System.out.println("返回结果-----&gt;"+buffer);
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+}</code></pre>
+<h3>HttpClient 链接</h3>
+<h4>例子 @Test</h4>
+<pre><code>public void sendInfoBynvps(){
+    try {
+        HttpClient httpClient = new SSLClient();
+        HttpPost postMethod = new HttpPost("http://192.168.1.108:9112/sendMes/getObject1");
+        List&lt;BasicNameValuePair&gt; nvps = new ArrayList&lt;BasicNameValuePair&gt;();
+        nvps.add(new BasicNameValuePair("name", "郑净云"));
+        nvps.add(new BasicNameValuePair("gender", "男"));
+        nvps.add(new BasicNameValuePair("age", "23"));
+        nvps.add(new BasicNameValuePair("address", "四川成都"));
+        nvps.add(new BasicNameValuePair("interest", "嗨皮"));
+        nvps.add(new BasicNameValuePair("appearance", "handsome"));
+        postMethod.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
+        HttpResponse resp = httpClient.execute(postMethod);
+        String str = EntityUtils.toString(resp.getEntity(), "UTF-8");
+        System.out.println("notify data is ----&gt;"+str);
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+该方法不可使用@responseBody 接收参数   但是request.getParamterMap 与  直接实体接收不为空</code></pre>
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>
