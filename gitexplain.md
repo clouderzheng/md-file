@@ -34,6 +34,9 @@
 ###4）接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们
     $ git config --global user.name "your name"
     $ git config --global user.email "your_email@youremail.com"
+###5）进入要上传的仓库，右键git bash，添加远程地址
+    $ git remote add origin git@github.com:yourName/yourRepo.git
+    后面的yourName和yourRepo表示你再github的用户名和刚才新建的仓库，加完之后进入.git，打开config，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。
 ###提交上传
     1）接下来在本地仓库里添加一些文件，比如README
 
@@ -44,4 +47,7 @@
     2）上传到github 
     $ git push origin master
 
-###
+###How to achieve multi - person collaboration
+    1）fork this project
+    2)pull from github to you local repository
+Edit By [MaHua](http://mahua.jser.me)
