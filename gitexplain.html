@@ -52,6 +52,12 @@ $ git push origin master</code></pre>
 <h3>How to achieve multi - person collaboration</h3>
 <pre><code>1）fork this project
 2)pull from github to you local repository</code></pre>
-<p>Edit By <a href="http://mahua.jser.me">MaHua</a>
-Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+<p>github解决端口22不能连接错误</p>
+    \Git\etc\ssh\ssh_config 下添加
+Host github.com
+User 你的注册邮箱
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
 </body></html>
